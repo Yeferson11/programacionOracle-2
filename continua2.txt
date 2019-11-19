@@ -1,0 +1,161 @@
+Microsoft Windows [Versión 10.0.17763.107]
+(c) 2018 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Administrador>sqlplus /nolog
+
+SQL*Plus: Release 11.2.0.2.0 Production on Mar Nov 19 09:47:43 2019
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys/oracle as sysdba
+Connected.
+SQL> show user
+USER is "SYS"
+SQL> create user Yeferson identifield by 123;
+create user Yeferson identifield by 123
+                     *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> create user Yeferson identified by 123;
+
+User created.
+
+SQL> grant connect, resource to Yeferson;
+
+Grant succeeded.
+
+SQL> connec Yeferson/123;
+Connected.
+SQL> show user
+USER is "YEFERSON"
+SQL> create table categoria(
+  2  codigo(2,0)not null primary key,
+  3  descripcion varchar2(50)not null);
+codigo(2,0)not null primary key,
+      *
+ERROR at line 2:
+ORA-00902: invalid datatype
+
+
+SQL> create table categoria(
+  2  codigo number(2,0)primary key,
+  3  descripcion varchar2(50)not null);
+
+Table created.
+
+SQL> create table usuario(
+  2  codigo nu,ber(2,0)primary key,
+  3  nombre varchar2(50) not null,
+  4  pass varchar2(50) not null);
+codigo nu,ber(2,0)primary key,
+             *
+ERROR at line 2:
+ORA-00902: invalid datatype
+
+
+SQL> create table usuario(
+  2  codigo number(2,0)primary key,
+  3  nombre varchar2(50) not null,
+  4  pass varchar2(50) not null);
+
+Table created.
+
+SQL> create table producto(
+  2  codigo number(2,0)primary key,
+  3  nombre varchar2(50)not null,
+  4  precio_unitario varchar2(50)not null);
+
+Table created.
+
+SQL> create sequence sq_categoria;
+
+Sequence created.
+
+SQL> create sequence sq_usuario;
+
+Sequence created.
+
+SQL> create sequence sq_producto;
+
+Sequence created.
+
+SQL> insert into categorias
+  2  values(sq_categorias.nextvals
+  3  s
+  4  );
+s
+*
+ERROR at line 3:
+ORA-00917: missing comma
+
+
+SQL> insert into categoria
+  2  values(sq_categoria.nextval,'Producto');
+
+1 row created.
+
+SQL> insert into categoria
+  2  values(sq_categoria.nextval,'Venta');
+
+1 row created.
+
+SQL> insert into usuario
+  2  values(sq_usuario.nextval,'Yeferson','123');
+
+1 row created.
+
+SQL> insert into usuario
+  2  values(sq_usuario.nextval,'Mike','123');
+
+1 row created.
+
+SQL> insert into producto
+  2  values(sq_producto.nextval,'Alberto','2');
+
+1 row created.
+
+SQL> insert into producto
+  2  values(sq_producto.nextval,'Karim','2');
+
+1 row created.
+
+SQL> select * from categoria;
+
+    CODIGO DESCRIPCION
+---------- --------------------------------------------------
+         1 Producto
+         2 Venta
+
+SQL> select * from usuario;
+
+    CODIGO NOMBRE
+---------- --------------------------------------------------
+PASS
+--------------------------------------------------
+         1 Yeferson
+123
+
+         2 Mike
+123
+
+
+SQL> select * from producto;
+
+    CODIGO NOMBRE
+---------- --------------------------------------------------
+PRECIO_UNITARIO
+--------------------------------------------------
+         1 Alberto
+2
+
+         2 Karim
+2
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL>
